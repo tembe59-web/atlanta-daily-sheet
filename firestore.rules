@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Permitir leitura e escrita na colecção daily_sheets
+    // Para produção, recomenda-se adicionar autenticação Firebase Auth
+    match /daily_sheets/{docId} {
+      allow read, write: if true;
+    }
+  }
+}
